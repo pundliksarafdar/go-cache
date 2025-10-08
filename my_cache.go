@@ -3,8 +3,7 @@ package cache
 import (
 	"container/list"
 	"errors"
-	"fmt"
-	"os"
+	"log"
 	"sync"
 )
 
@@ -112,13 +111,10 @@ func (c *LRUCache) Decrement(key string, delta int64) error {
 	return nil
 }
 
-func (c *LRUCache) ReadCacheFromFile() {
+func (c *LRUCache) StoreUserAndPasswordKeys(username, password string) error {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
-	os.Open("internal/cache_data.txt")
-}
-
-func (c *LRUCache) StoreUserNamePassword(user, password string) {
-	fmt.Println("User name is: ", user)
-	fmt.Println("Password is: ", password)
+	log.Printf("Authenticating user='%s' with password='%s'\n", username, password)
+	c.Put(username, password)
+	return nil
 }
