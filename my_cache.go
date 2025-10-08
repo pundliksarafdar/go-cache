@@ -122,14 +122,19 @@ func printArea(shape string, area float64) {
 	fmt.Printf("%s area: %f\n", shape, area)
 }
 
-func calculateCircleArea(radius float64) float64 {
-	area := 3.14159 * radius * radius
-	printArea("Circle", area)
+func calculateSquareArea(width float64) float64 {
+	area := width * width
+	printArea("React", area)
 	return area
 }
 
-func calculateCylinderArea(radius, height float64) float64 {
-	area := 2 * 3.14159 * radius * height
-	printArea("Cylinder", area)
+func calculateReactArea(width, height float64) float64 {
+	area := width * height
+	printArea("React", area)
 	return area
+}
+
+func calculateArea(side float64) {
+	calculateSquareArea(side)
+	calculateReactArea(side, side)
 }
