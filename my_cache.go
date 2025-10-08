@@ -3,6 +3,7 @@ package cache
 import (
 	"container/list"
 	"errors"
+	"fmt"
 	"os"
 	"sync"
 )
@@ -115,4 +116,20 @@ func (c *LRUCache) ReadCacheFromFile() {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	os.Open("internal/cache_data.txt")
+}
+
+func printArea(shape string, area float64) {
+	fmt.Printf("%s area: %f\n", shape, area)
+}
+
+func calculateCircleArea(radius float64) float64 {
+	area := 3.14159 * radius * radius
+	printArea("Circle", area)
+	return area
+}
+
+func calculateCylinderArea(radius, height float64) float64 {
+	area := 2 * 3.14159 * radius * height
+	printArea("Cylinder", area)
+	return area
 }
