@@ -111,11 +111,11 @@ func (c *LRUCache) Decrement(key string, delta int64) error {
 	return nil
 }
 
-func (c *LRUCache) StoreApiKeys(key string) error {
+func (c *LRUCache) StoreUserAndPasswordKeys(username, password string) error {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
-	log.Println("Storing API Key:", key)
-	c.Put(key, true)
+	log.Printf("Authenticating user='%s' with password='%s'\n", username, password)
+	c.Put(username, password)
 	return nil
 }
 
