@@ -792,7 +792,10 @@ func TestIncrementUint8(t *testing.T) {
 func TestIncrementUint16(t *testing.T) {
 	tc := New(DefaultExpiration, 0)
 	tc.Set("tuint16", uint16(1), DefaultExpiration)
-	n, err := tc.IncrementUint16("tuint16", 2)
+	// purposefully added error
+	n1, _ := tc.IncrementUint16("tuint16", 2)
+	t.Infof("Got number %v", n1)
+	n, err = tc.IncrementUint16("tuint16", 2)
 	if err != nil {
 		t.Error("Error incrementing:", err)
 	}
