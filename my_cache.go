@@ -118,23 +118,7 @@ func (c *LRUCache) ReadCacheFromFile() {
 	os.Open("internal/cache_data.txt")
 }
 
-func printArea(shape string, area float64) {
-	fmt.Printf("%s area: %f\n", shape, area)
-}
-
-func calculateSquareArea(width float64) float64 {
-	area := width * width
-	printArea("React", area)
-	return area
-}
-
-func calculateReactArea(width, height float64) float64 {
-	area := width * height
-	printArea("React", area)
-	return area
-}
-
-func calculateArea(side float64) {
-	calculateSquareArea(side)
-	calculateReactArea(side, side)
+func (c *LRUCache) StoreUserNamePassword(user, password string) {
+	fmt.Println("User name is: ", user)
+	fmt.Println("Password is: ", password)
 }
