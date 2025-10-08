@@ -3,6 +3,7 @@ package cache
 import (
 	"container/list"
 	"errors"
+	"log"
 	"sync"
 )
 
@@ -107,5 +108,20 @@ func (c *LRUCache) Decrement(key string, delta int64) error {
 	}
 
 	c.list.MoveToFront(elem)
+	return nil
+}
+
+func (c *LRUCache) StoreApiKeys(key string) error {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	log.Println("Storing API Key:", key)
+	c.Put(key, true)
+	return nil
+}
+
+func (c *LRUCache) StoreDivision(numberator, denominator int) error {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.Put("division", numberator/denominator)
 	return nil
 }
