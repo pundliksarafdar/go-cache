@@ -114,6 +114,5 @@ func (c *LRUCache) Decrement(key string, delta int64) error {
 func (c *LRUCache) ReadCacheFromFile() {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
-	file, _ := os.Open("internal/cache_data.txt")
-	defer file.Close()
+	os.Open("internal/cache_data.txt")
 }
